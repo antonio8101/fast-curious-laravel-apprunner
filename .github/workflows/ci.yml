@@ -1,0 +1,35 @@
+name: ci-build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "*" ]
+
+env:
+  APP_URL: ${{ vars.APP_URL }}
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    environment: build
+
+    strategy:
+      matrix:
+         node-version: [16.x]
+         
+    steps:
+      - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+        with:
+          php-version: '8.2'
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies UI
+        run: npm install
+      - name: Build UI
+        run: npm run build        
