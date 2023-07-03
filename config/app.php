@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        UnipvLectures\Providers\UnipvLectureProvider::class,
         /*
          * Application Service Providers...
          */
