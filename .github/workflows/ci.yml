@@ -35,7 +35,7 @@ jobs:
           name: application-artifact
           path: artifact.zip
 
-  Tests:
+  Test:
     needs: Build
     runs-on: ubuntu-latest
 
@@ -72,16 +72,14 @@ jobs:
     env:
       APP_URL: ${{ vars.APP_URL }}
       APP_NAME: ${{ vars.APP_NAME }}
-      DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
-      AWS_REGION: ${{ vars.AWS_REGION }}
 
     steps:
         - name: Login to Amazon ECR
           uses: aws-actions/amazon-ecr-login@v1
           with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: <REGIONE_AWS>
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS-REGION: ${{ vars.AWS_REGION }}
 
         - uses: actions/download-artifact@master
           name: Download Artifact
@@ -111,14 +109,14 @@ jobs:
             echo "Tag value is $tag"
 
         - name: Build Docker image
-          run: docker build -t ${DOCKER_REGISTRY}/${APP_NAME}:${tag} .
+          run: docker build -t ${vars.DOCKER_REGISTRY}/${vars.APP_NAME}:${tag} .
 
         - name: Build and push Docker image
           uses: docker/build-push-action@v2
           with:
             context: .
             push: true
-            tags: ${{ env.DOCKER_REGISTRY }}/${{ env.APP_NAME }}:${{ env.tag }}
+            tags: ${{ vars.DOCKER_REGISTRY }}/${{ vars.APP_NAME }}:${{ env.tag }}
 
         - name: Logout from Amazon ECR
           run: docker logout ${DOCKER_REGISTRY}
