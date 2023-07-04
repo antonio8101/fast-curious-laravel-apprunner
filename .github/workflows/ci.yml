@@ -73,15 +73,13 @@ jobs:
       APP_URL: ${{ vars.APP_URL }}
 
     steps:
-        - name: Login to Amazon ECR
-          uses: aws-actions/amazon-ecr-login@v1
+        - name: Login to ECR
+          id: ecr
+          uses: jwalton/gh-ecr-login@v1
           with:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION: ${{ vars.AWS_REGION }}
-            aws-region: ${{ vars.AWS_REGION }}
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            region: ${{ vars.AWS_REGION }}
 
         - uses: actions/download-artifact@master
           name: Download Artifact
