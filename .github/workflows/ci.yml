@@ -14,8 +14,8 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
-        aws-region: us-east-2
+        role-to-assume: arn:aws:iam::484725583747:role/GithubECR
+        aws-region: eu-central-1
 
   Build:
     needs: Maremma
