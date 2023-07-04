@@ -107,9 +107,6 @@ jobs:
           run: |
             echo "Tag value is $tag"
 
-#        - name: Build Docker image
-#          run: docker build -t ${{ vars.DOCKER_REGISTRY }}/${{ vars.APP_NAME }}:${{ tag }} .
-
         - name: Build and push Docker image
           uses: docker/build-push-action@v2
           with:
