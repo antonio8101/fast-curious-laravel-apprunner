@@ -8,8 +8,17 @@ on:
 
 jobs:
 
-  Build:
+  Maremma:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
+        aws-region: us-east-2
 
+  Build:
+    needs: Maremma
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
