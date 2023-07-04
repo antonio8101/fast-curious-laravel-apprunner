@@ -108,13 +108,19 @@ jobs:
         - name: Build Docker image
           run: docker build -t ${DOCKER_REGISTRY}/${APP_NAME}:${tag} .
 
-        - name: Save Docker image as Artifact
-          uses: actions/upload-artifact@master
+        - name: Build and push Docker image
+          uses: docker/build-push-action@v2
           with:
-            name: application-docker-image
-            path: |
-              $(docker save ${DOCKER_REGISTRY}/${APP_NAME}:${tag}" | gzip > application-docker-image.tar.gz)
+            context: .
+            push: true
+            tags: ${DOCKER_REGISTRY}/${APP_NAME}:${tag}
 
+        - name: Save Docker image as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: docker-image
+            path: |
+              /var/lib/docker/image/${DOCKER_REGISTRY}_${APP_NAME}-${tag}.tar
 
 #  Release:
 #    needs: Tests
