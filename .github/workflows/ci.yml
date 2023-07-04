@@ -119,8 +119,7 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: docker-image
-            path: |
-              /var/lib/docker/image/${DOCKER_REGISTRY}_${APP_NAME}-${tag}.tar
+            path: ${{ env.DOCKER_REGISTRY }}_${{ env.APP_NAME }}-${{ env.tag }}.tar
 
 #  Release:
 #    needs: Tests
