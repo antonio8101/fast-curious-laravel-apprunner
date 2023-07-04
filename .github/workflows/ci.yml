@@ -71,7 +71,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_URL: ${{ vars.APP_URL }}
-      APP_NAME: ${{ vars.APP_NAME }}
 
     steps:
         - name: Login to Amazon ECR
@@ -109,7 +108,7 @@ jobs:
             echo "Tag value is $tag"
 
         - name: Build Docker image
-          run: docker build -t ${vars.DOCKER_REGISTRY}/${vars.APP_NAME}:${tag} .
+          run: docker build -t ${ vars.DOCKER_REGISTRY }/${ vars.APP_NAME }:${ tag } .
 
         - name: Build and push Docker image
           uses: docker/build-push-action@v2
