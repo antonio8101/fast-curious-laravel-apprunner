@@ -67,7 +67,7 @@ jobs:
         run: vendor/bin/phpunit
 
   Release:
-    needs: Tests
+    needs: Test
     runs-on: ubuntu-latest
     env:
       APP_URL: ${{ vars.APP_URL }}
