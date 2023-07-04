@@ -112,7 +112,7 @@ jobs:
           uses: docker/build-push-action@v2
           with:
             context: .
-            push: true
+            push: false
             tags: ${{ env.DOCKER_REGISTRY }}/${{ env.APP_NAME }}:${{ env.tag }}
 
         - name: Save Docker image as artifact
