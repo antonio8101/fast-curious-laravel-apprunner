@@ -1,6 +1,6 @@
 [![ci-build](https://github.com/antonio8101/fast-curious-laravel-apprunner/actions/workflows/ci.yml/badge.svg)](https://github.com/antonio8101/fast-curious-laravel-apprunner/actions/workflows/ci.yml)
 
-# Fast-curious-laravel-apprunner
+# Laravel AppRunner
 
 This is simply a show off the AWS App Runner service. 
 
