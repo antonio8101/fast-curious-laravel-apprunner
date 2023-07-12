@@ -4,7 +4,7 @@
 
 This is simply a show off the AWS App Runner service. 
 
-## How to Deploy this REPO as an AWS APPRUNNER
+## How to:
 
 ### Create a IAM User
 [https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-central-1#/users](https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-central-1#/users)
