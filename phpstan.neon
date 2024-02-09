@@ -1,5 +1,5 @@
 rules:
-    - App\MyRule
+    - App\StaticCodeAnalysis\CustomRules\MyRule
 parameters:
     level: 7
     paths:
