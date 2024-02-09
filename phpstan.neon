@@ -22,8 +22,3 @@ parameters:
         - app/Http/Middleware/TrimStrings.php
         - app/Http/Middleware/ConvertEmptyStringsToNull.php
         - app/Http/Middleware/TrustHosts.php
-    autoload_files:
-        - bootstrap/autoload.php
-        - bootstrap/app.php
-        - artisan
-        - vendor/autoload.php
