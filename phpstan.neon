@@ -11,7 +11,11 @@ parameters:
         - app/Http/Controllers
         - app/Http/Middleware
         - app/Models
-    ignores_analyse:
+    excludePaths:
+        - vendor
+        - storage
+        - bootstrap/cache
+        - public
         - app/Http/Controllers/Controller.php
         - app/Http/Middleware/EncryptCookies.php
         - app/Http/Middleware/VerifyCsrfToken.php
