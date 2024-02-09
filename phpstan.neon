@@ -1,4 +1,25 @@
 parameters:
     level: 7
     paths:
-        - src
+        - app
+        - config
+        - database
+        - routes
+        - tests
+        - resources/views
+        - app/Providers
+        - app/Http/Controllers
+        - app/Http/Middleware
+        - app/Models
+    ignores_analyse:
+        - app/Http/Controllers/Controller.php
+        - app/Http/Middleware/EncryptCookies.php
+        - app/Http/Middleware/VerifyCsrfToken.php
+        - app/Http/Middleware/TrimStrings.php
+        - app/Http/Middleware/ConvertEmptyStringsToNull.php
+        - app/Http/Middleware/TrustHosts.php
+    autoload_files:
+        - bootstrap/autoload.php
+        - bootstrap/app.php
+        - artisan
+        - vendor/autoload.php
