@@ -28,3 +28,5 @@ parameters:
         - bootstrap/app.php
         - artisan
         - vendor/autoload.php
+    rules:
+        - App\MyRule
