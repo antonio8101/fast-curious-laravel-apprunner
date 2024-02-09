@@ -65,6 +65,9 @@ jobs:
           APP_URL: ${{ vars.APP_URL }}
         run: vendor/bin/phpunit
 
+      - name: Run PHPStan
+        run: php ./vendor/bin/phpstan analyze --configuration phpstan.neon
+
   Release:
     needs: Test
     runs-on: ubuntu-latest
