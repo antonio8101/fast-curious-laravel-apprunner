@@ -21,7 +21,9 @@ parameters:
         - app/Http/Middleware/VerifyCsrfToken.php
         - app/Http/Middleware/TrimStrings.php
         - app/Http/Middleware/ConvertEmptyStringsToNull.php
+        - app/Http/Middleware/RedirectIfAuthenticated.php
         - app/Http/Middleware/TrustHosts.php
+        - routes/console.php
         - bootstrap/autoload.php
         - bootstrap/app.php
         - artisan
